@@ -2,14 +2,16 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
 from pinecone import Pinecone, ServerlessSpec
 from langchain_pinecone import PineconeVectorStore
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
 import os
 
 load_dotenv()
 
 def download_huggingface_embeddings():
-    print("Loading embeddings...")
-    embeddings = HuggingFaceEmbeddings(model_name='sentence-transformers/all-MiniLM-L6-v2')
+    embeddings = HuggingFaceInferenceAPIEmbeddings(
+        api_key=os.getenv("HUGGINGFACEHUB_API_TOKEN"),
+        model_name="sentence-transformers/all-MiniLM-L6-v2"
+    )
     return embeddings
 
 def load_models():
