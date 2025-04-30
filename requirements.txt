@@ -1,0 +1,37 @@
+# Core LLM + Vector DB
+langchain
+langchain_community
+faiss-cpu
+sentence-transformers
+transformers
+accelerate
+torch
+pinecone
+langchain-pinecone
+langchain-google-genai
+
+# PDF + Data Handling
+pymupdf  # PDF parsing
+pypdf
+tqdm
+pandas
+
+# Backend API
+flask
+streamlit
+
+# Optional: if using LangGraph for multi-step agent planning
+langgraph
+
+# Local Development
+python-dotenv
+jupyter
+
+# Groq API (optional if using Groq for Mistral)
+groq
+
+# Web Frontend (optional if integrating React later)
+# Add only if needed in frontend phase
+
+# Deployment
+gunicorn  # if deploying with a WSGI server
