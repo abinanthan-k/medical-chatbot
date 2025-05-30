@@ -2,16 +2,14 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
 from pinecone import Pinecone, ServerlessSpec
 from langchain_pinecone import PineconeVectorStore
-from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
+
 import os
 
 load_dotenv()
 
 def download_huggingface_embeddings():
-    embeddings = HuggingFaceInferenceAPIEmbeddings(
-        api_key=os.getenv("HUGGINGFACEHUB_API_TOKEN"),
-        model_name="sentence-transformers/all-MiniLM-L6-v2"
-    )
+    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
     return embeddings
 
 def load_models():
@@ -26,5 +24,5 @@ def load_models():
     print("Retriver building...")
     retriever = docsearch.as_retriever(search_type="similarity", search_kwargs={"k":3})
     print("Loading chat google")
-    llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=os.getenv("GOOGLE_API_KEY"))
+    llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash", api_key=os.getenv("GOOGLE_API_KEY"))
     return llm, retriever
