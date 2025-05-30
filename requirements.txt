@@ -9,6 +9,7 @@ torch
 pinecone
 langchain-pinecone
 langchain-google-genai
+langchain-huggingface
 
 # PDF + Data Handling
 pymupdf  # PDF parsing
